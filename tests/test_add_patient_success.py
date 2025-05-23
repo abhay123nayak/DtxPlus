@@ -1,3 +1,5 @@
+import time
+
 import pytest
 import allure
 from selenium import webdriver
@@ -25,7 +27,7 @@ class TestPatientForm:
             "first_name": "Alice",
             "last_name": "Smith",
             "dob": "1985-10-10",
-            "discharge": "2025-05-23T09:00",
+            "discharge": "2025-05-23 09:00",
             "phone": "9876543210",
             "language": "English",
             "timezone": "PST"
@@ -33,3 +35,4 @@ class TestPatientForm:
 
         form.fill_form(patient)
         form.submit()
+        self.helper._wait_for(seconds=10)

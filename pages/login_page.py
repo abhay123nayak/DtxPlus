@@ -20,11 +20,11 @@ class LoginPage:
             password = self.config.get('DEFAULT', 'password')
 
         self.helper.enter_text(LoginLocators.USERNAME_INPUT, username)
-        time.sleep(1)
+        self.helper._wait_for(seconds=1)
         self.helper.enter_text(LoginLocators.PASSWORD_INPUT, password)
-        time.sleep(1)
+        self.helper._wait_for(seconds=1)
         self.helper.click(LoginLocators.LOGIN_BUTTON)
-        time.sleep(2)
+        self.helper._wait_for(seconds=3)
 
     def get_title_text(self):
         return self.helper.find(LoginLocators.DASHBOARD_TITLE).text

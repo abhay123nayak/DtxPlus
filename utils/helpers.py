@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+import time
 class ElementHelper:
     def __init__(self, driver):
         self.driver = driver
@@ -24,3 +25,15 @@ class ElementHelper:
         element = self.find(locator)
         select = Select(element)
         select.select_by_visible_text(text)
+
+    @staticmethod
+    def _wait_for(seconds):
+        """Wait for the given number of seconds (must be provided)."""
+        time.sleep(seconds)
+
+
+    def is_visible(self, locator):
+        try:
+            return self.find(locator).is_displayed()
+        except:
+            return False
